@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>The Centered Logo Navbar</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__container">
+            <!-- This nav is for the left side links on desktop -->
+            <nav class="navbar__desktop-nav navbar__desktop-nav--left">
+                <ul>
+                    <li><a href="#">Puplications</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </nav>
+            
+            <!-- This is the centered brand logo -->
+            <a href="#" class="navbar__brand-logo">
+              <img src="assets/images/orange-slice.png">
+            </a>
+            
+            <!-- This nav is for the right side links on desktop -->
+            <nav class="navbar__desktop-nav navbar__desktop-nav--right">
+                <ul>
+                    <li><a href="#">Volunteer Work</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- This button is only visible on mobile -->
+            <button class="navbar__toggle-desktop" id="darkModeToggle">
+                &#x263C;
+            </button>
+
+            <!-- This button is only visible on mobile -->
+            <button class="navbar__mobile-toggle" id="navbarToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+                &#x2630;
+            </button>
+        </div>
+    </header>
+
+
+    <!-- This entire menu is only for mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <!-- A combined list of all links for mobile view -->
+            <li><a href="#">Puplications</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Volunteer Work</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    
+    <main class="content">
+        <h1>Centered Logo Navbar</h1>
+        <p>On larger screens, the logo is perfectly centered. On smaller screens, the layout gracefully changes to a standard mobile-friendly pattern.</p>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navbarToggle = document.getElementById('navbarToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (navbarToggle && mobileMenu) {
+            navbarToggle.addEventListener('click', function () {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('is-active');
+            });
+        }
+    });
+
+    const colorScheme = document.querySelector('meta[name=color-scheme]');
+    const switchButton = document.getElementById('darkModeToggle');
+
+    const darkModeMql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (darkModeMql && darkModeMql.matches) {
+        colorScheme.content = "dark";
+        switchButton.firstChild.data = "\u{263C}";
+    } else {
+        colorScheme.content = "light";
+        switchButton.firstChild.data = "\u{263D}";
+    }
+
+    switchButton.addEventListener('click', () => {
+        if (colorScheme.content == "dark"){
+            colorScheme.content = "light";
+            switchButton.firstChild.data = "\u{263D}";
+        } else {
+            colorScheme.content = "dark";
+            switchButton.firstChild.data = "\u{263C}";
+        }
+    });
+
+    </script>
+</body>
+</html>
