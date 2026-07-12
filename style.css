@@ -24,8 +24,7 @@
         ========================================
         */
         *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; font-family: var(--font-family-sans-serif); background-color: var(--color-background); }
-        .content { height: 200vh; max-width: var(--container-width); margin: 0 auto; padding: calc(var(--navbar-height) + 2rem) 1.5rem; }
+        .content { height: 200vh; max-width: var(--container-width); margin: auto 20% auto 20%; padding: calc(var(--navbar-height) + 2rem) 1.5rem; }
         ul { list-style: none; margin: 0; padding: 0; }
         a { text-decoration: none; color: var(--color-text-secondary); transition: color var(--transition-speed) ease; }
         a:hover, a:focus { color: var(--color-text-primary); }
@@ -48,7 +47,13 @@
         }
 
         .navbar__brand-logo {
-            width:auto; height: var(--navbar-height); margin-right: auto;
+            width:auto; height: var(--navbar-height); margin-right: auto; 
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+        }
+
+        img {
+            border-radius: 15px; width:auto; height: var(--navbar-height);
         }
 
         .navbar__brand-logo img {
@@ -57,14 +62,41 @@
             object-fit: fill;
         }
 
+        .navbar_button { text-decoration: none; color: var(--color-text-secondary); background-color: var(--color-background); border:none; cursor:pointer;}
+        .navbar_button:hover {color: var(--color-text-primary);}
 
+        .navbar_button_img { width:auto; height: var(--navbar-height);margin:0; padding:0; appearance: none; border:none; cursor:pointer; background-color: var(--color-background);}
+
+        /*
+        ========================================
+        Main Body layout
+        ========================================
+        */
+        body { margin: 0; font-family: var(--font-family-sans-serif); background-color: var(--color-background); }
+        /* Make Logic Work (Only display when needed) */
+        #body[introduction-flag="false"] .introduction{
+            display:none;
+        }
+        #body[publications-flag="false"] .publications{
+            display:none;
+        }
+        #body[portfolio-flag="false"] .portfolio{
+            display:none;
+        }
+        #body[recipes-flag="false"] .recipes{
+            display:none;
+        }
+        #body[contact-flag="false"] .contact{
+            display:none;
+        }
+        
         /*
         ========================================
         Mobile Navigation (Default State)
         ========================================
         */
         .navbar__desktop-nav { display: none; } /* Hide desktop nav on mobile */
-.navbar__toggle {
+        .navbar__toggle {
             display: none;
             }
             .navbar__toggle-desktop {
@@ -81,7 +113,7 @@
             border-top: 1px solid var(--color-border); box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
         .mobile-menu.is-active { display: block; }
-        .mobile-menu ul li a { display: block; padding: 1rem 1.5rem; }
+        .mobile-menu ul li button { display: block; padding: 1rem 1.5rem; }
         .mobile-menu ul li:not(:last-child) { border-bottom: 1px solid var(--color-border); }
 
         :is(.navbar__mobile-toggle, .navbar__desktop-nav a):focus-visible { outline: 2px solid var(--color-primary-accent); outline-offset: 4px; border-radius: 4px; }

@@ -13,21 +13,23 @@
             <!-- This nav is for the left side links on desktop -->
             <nav class="navbar__desktop-nav navbar__desktop-nav--left">
                 <ul>
-                    <li><a href="#">Puplications</a></li>
-                    <li><a href="#">Portfolio</a></li>
+                    <button class="navbar_button" id="pub_button">Publications</button>
+                    <button class="navbar_button" id="port_button">Portfolio</button>
                 </ul>
             </nav>
             
             <!-- This is the centered brand logo -->
-            <a href="#" class="navbar__brand-logo">
-              <img src="assets/images/orange-slice.png">
+            <a class="navbar__brand-logo">
+                <button class="navbar_button_img" id="img_button">
+                    <img src="assets/images/profilepic.jpeg">
+                </button>
             </a>
             
             <!-- This nav is for the right side links on desktop -->
             <nav class="navbar__desktop-nav navbar__desktop-nav--right">
                 <ul>
-                    <li><a href="#">Volunteer Work</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <button class="navbar_button" id="rec_button">Recipes</button>
+                    <button class="navbar_button" id="con_button">Contact</button>
                 </ul>
             </nav>
             
@@ -48,16 +50,34 @@
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <!-- A combined list of all links for mobile view -->
-            <li><a href="#">Puplications</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Volunteer Work</a></li>
-            <li><a href="#">Contact</a></li>
+            <button class="navbar_button" id="pub_button">Publications</button>
+            <button class="navbar_button" id="port_button">Portfolio</button>
+            <button class="navbar_button" id="rec_button">Recipes</button>
+            <button class="navbar_button" id="con_button">Contact</button>
         </ul>
     </div>
     
-    <main class="content">
-        <h1>Centered Logo Navbar</h1>
-        <p>On larger screens, the logo is perfectly centered. On smaller screens, the layout gracefully changes to a standard mobile-friendly pattern.</p>
+    <main class="content" id="body" introduction-flag="true" publications-flag="false" portfolio-flag="false" recipes-flag="false" contact-flag="false">
+        <div class="introduction">
+            <p>This is the beginning of my own personal website. There is nothing much here yet, so it's very much a work in progress. I am a theoretical computer science phd student at Linköping university
+            and wanted to list my publication and contact details in one place and fill that place full of whimsy and gimicky nonsense. Hence this site.
+            </p>
+        </div>
+        <div class="publications">
+            <p>This is where I list my scientific publications.</p>
+        </div>
+        <div class="portfolio">
+            <p>This is where I list cool stuff I worked on outside of science.
+            </p>
+        </div>
+        <div class="recipes">
+            <p>This is where I list my favorite recipes for cooking and baking.
+            </p>
+        </div>
+        <div class="contact">
+            <p>This is where I will list my contact details
+            </p>
+        </div>
     </main>
 
     <script>
@@ -97,6 +117,47 @@
         }
     });
 
+    const mainbody = document.getElementById("body");
+    const pubButton = document.getElementById("pub_button");
+    pubButton.addEventListener('click', () => {
+        mainbody.setAttribute("publications-flag", "true");
+        mainbody.setAttribute("portfolio-flag", "false");
+        mainbody.setAttribute("introduction-flag", "false");
+        mainbody.setAttribute("recipes-flag", "false");
+        mainbody.setAttribute("contact-flag", "false");
+    });
+    const portButton = document.getElementById("port_button");
+    portButton.addEventListener('click', () => {
+        mainbody.setAttribute("publications-flag", "false");
+        mainbody.setAttribute("portfolio-flag", "true");
+        mainbody.setAttribute("introduction-flag", "false");
+        mainbody.setAttribute("recipes-flag", "false");
+        mainbody.setAttribute("contact-flag", "false");
+    });
+    const imgButton = document.getElementById("img_button");
+    imgButton.addEventListener('click', () => {
+        mainbody.setAttribute("publications-flag", "false");
+        mainbody.setAttribute("portfolio-flag", "false");
+        mainbody.setAttribute("introduction-flag", "true");
+        mainbody.setAttribute("recipes-flag", "false");
+        mainbody.setAttribute("contact-flag", "false");
+    });
+    const recButton = document.getElementById("rec_button");
+    recButton.addEventListener('click', () => {
+        mainbody.setAttribute("publications-flag", "false");
+        mainbody.setAttribute("portfolio-flag", "false");
+        mainbody.setAttribute("introduction-flag", "false");
+        mainbody.setAttribute("recipes-flag", "true");
+        mainbody.setAttribute("contact-flag", "false");
+    });
+    const conButton = document.getElementById("con_button");
+    conButton.addEventListener('click', () => {
+        mainbody.setAttribute("publications-flag", "false");
+        mainbody.setAttribute("portfolio-flag", "false");
+        mainbody.setAttribute("introduction-flag", "false");
+        mainbody.setAttribute("recipes-flag", "false");
+        mainbody.setAttribute("contact-flag", "true");
+    });
     </script>
 </body>
 </html>
