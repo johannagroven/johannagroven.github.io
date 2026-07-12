@@ -50,14 +50,14 @@
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <!-- A combined list of all links for mobile view -->
-            <button class="navbar_button" id="pub_button">Publications</button>
-            <button class="navbar_button" id="port_button">Portfolio</button>
-            <button class="navbar_button" id="rec_button">Recipes</button>
-            <button class="navbar_button" id="con_button">Contact</button>
+            <button class="navbar_button" id="pub_button_mob">Publications</button>
+            <button class="navbar_button" id="port_button_mob">Portfolio</button>
+            <button class="navbar_button" id="rec_button_mob">Recipes</button>
+            <button class="navbar_button" id="con_button_mob">Contact</button>
         </ul>
     </div>
     
-    <main class="content" id="body" introduction-flag="true" publications-flag="false" portfolio-flag="false" recipes-flag="false" contact-flag="false">
+    <main class="content" id="body" content="introduction">
         <div class="introduction">
             <p>This is the beginning of my own personal website. There is nothing much here yet, so it's very much a work in progress. I am a theoretical computer science phd student at Linköping university
             and wanted to list my publication and contact details in one place and fill that place full of whimsy and gimicky nonsense. Hence this site.
@@ -81,6 +81,8 @@
     </main>
 
     <script>
+
+    /* Toggle for mobile navbar */
     document.addEventListener('DOMContentLoaded', function () {
         const navbarToggle = document.getElementById('navbarToggle');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -94,6 +96,8 @@
         }
     });
 
+
+    /* Add Functionality to dark/light theme selector */
     const colorScheme = document.querySelector('meta[name=color-scheme]');
     const switchButton = document.getElementById('darkModeToggle');
 
@@ -117,46 +121,44 @@
         }
     });
 
+    /* Change Body content according to button clicked */
     const mainbody = document.getElementById("body");
     const pubButton = document.getElementById("pub_button");
     pubButton.addEventListener('click', () => {
-        mainbody.setAttribute("publications-flag", "true");
-        mainbody.setAttribute("portfolio-flag", "false");
-        mainbody.setAttribute("introduction-flag", "false");
-        mainbody.setAttribute("recipes-flag", "false");
-        mainbody.setAttribute("contact-flag", "false");
+        mainbody.setAttribute("content", "publications")
     });
     const portButton = document.getElementById("port_button");
     portButton.addEventListener('click', () => {
-        mainbody.setAttribute("publications-flag", "false");
-        mainbody.setAttribute("portfolio-flag", "true");
-        mainbody.setAttribute("introduction-flag", "false");
-        mainbody.setAttribute("recipes-flag", "false");
-        mainbody.setAttribute("contact-flag", "false");
+        mainbody.setAttribute("content", "portfolio")
     });
     const imgButton = document.getElementById("img_button");
     imgButton.addEventListener('click', () => {
-        mainbody.setAttribute("publications-flag", "false");
-        mainbody.setAttribute("portfolio-flag", "false");
-        mainbody.setAttribute("introduction-flag", "true");
-        mainbody.setAttribute("recipes-flag", "false");
-        mainbody.setAttribute("contact-flag", "false");
+        mainbody.setAttribute("content", "introduction")
     });
     const recButton = document.getElementById("rec_button");
     recButton.addEventListener('click', () => {
-        mainbody.setAttribute("publications-flag", "false");
-        mainbody.setAttribute("portfolio-flag", "false");
-        mainbody.setAttribute("introduction-flag", "false");
-        mainbody.setAttribute("recipes-flag", "true");
-        mainbody.setAttribute("contact-flag", "false");
+        mainbody.setAttribute("content", "recipes")
     });
     const conButton = document.getElementById("con_button");
     conButton.addEventListener('click', () => {
-        mainbody.setAttribute("publications-flag", "false");
-        mainbody.setAttribute("portfolio-flag", "false");
-        mainbody.setAttribute("introduction-flag", "false");
-        mainbody.setAttribute("recipes-flag", "false");
-        mainbody.setAttribute("contact-flag", "true");
+        mainbody.setAttribute("content", "contact")
+    });
+    /* Same for mobile */
+    const pubButtonmob = document.getElementById("pub_button_mob");
+    pubButtonmob.addEventListener('click', () => {
+        mainbody.setAttribute("content", "publications")
+    });
+    const portButtonmob = document.getElementById("port_button_mob");
+    portButtonmob.addEventListener('click', () => {
+        mainbody.setAttribute("content", "portfolio")
+    });
+    const recButtonmob = document.getElementById("rec_button_mob");
+    recButtonmob.addEventListener('click', () => {
+        mainbody.setAttribute("content", "recipes")
+    });
+    const conButtonmob = document.getElementById("con_button_mob");
+    conButtonmob.addEventListener('click', () => {
+        mainbody.setAttribute("content", "contact")
     });
     </script>
 </body>

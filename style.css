@@ -74,19 +74,19 @@
         */
         body { margin: 0; font-family: var(--font-family-sans-serif); background-color: var(--color-background); }
         /* Make Logic Work (Only display when needed) */
-        #body[introduction-flag="false"] .introduction{
+        #body:not([content="introduction"]) .introduction{
             display:none;
         }
-        #body[publications-flag="false"] .publications{
+        #body:not([content="publications"]) .publications{
             display:none;
         }
-        #body[portfolio-flag="false"] .portfolio{
+        #body:not([content="portfolio"]) .portfolio{
             display:none;
         }
-        #body[recipes-flag="false"] .recipes{
+        #body:not([content="recipes"]) .recipes{
             display:none;
         }
-        #body[contact-flag="false"] .contact{
+        #body:not([content="contact"]) .contact{
             display:none;
         }
         
